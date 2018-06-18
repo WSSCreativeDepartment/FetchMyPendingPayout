@@ -1,0 +1,6 @@
+module Pods_Steemple_framework {
+  umbrella header "Pods-Steemple framework-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+module Pods_Steemple_widget {
+  umbrella header "Pods-Steemple widget-umbrella.h"
+
+  export *
+  module * { export * }
+}

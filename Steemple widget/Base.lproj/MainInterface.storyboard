@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Steemple_widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIX-eb-liG">
+                                <rect key="frame" x="16" y="0.0" width="141" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="DAx-AD-gne"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.2666666667" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ks-qb-eQ6">
+                                <rect key="frame" x="165" y="0.0" width="139" height="37"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.2666666667" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="YIX-eb-liG" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" id="4Hg-Mp-5Ws"/>
+                            <constraint firstItem="YIX-eb-liG" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="8RR-o7-q7i"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="1ks-qb-eQ6" secondAttribute="trailing" constant="16" id="GGu-IQ-iEB"/>
+                            <constraint firstItem="YIX-eb-liG" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="dWf-sF-QZE"/>
+                            <constraint firstItem="1ks-qb-eQ6" firstAttribute="leading" secondItem="YIX-eb-liG" secondAttribute="trailing" constant="8" id="kf2-dL-ena"/>
+                            <constraint firstItem="1ks-qb-eQ6" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="oQZ-Jn-7z4"/>
+                            <constraint firstItem="1ks-qb-eQ6" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" id="w3t-IQ-CEm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="37"/>
+                    <connections>
+                        <outlet property="author" destination="YIX-eb-liG" id="TpC-US-ceT"/>
+                        <outlet property="payout" destination="1ks-qb-eQ6" id="NG3-Wd-YEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.8" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
