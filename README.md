@@ -9,5 +9,6 @@ Your username will be there next time when you turn on the app.
 
 This is my first time using custom frameworks, Steemjs API and pod "SwiftyJSON".
 The app is free for using and personal modification. 
-I will create a post about the app on Steemit.com and paste my link here.
+You can find announcement and more about the app here:
+https://steemit.com/utopian-io/@dumar022/my-new-ios-widget-app-fetchmypendingpayout-check-the-payout-for-your-recent-steemit-post-without-even-unlocking-your-iphone
 #### Thank you!
