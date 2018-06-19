@@ -20,6 +20,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var pendingPayoutLabel: UILabel!
     
+    @IBOutlet weak var mesageView: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var messageOK: UIButton!
     
     
 
@@ -28,6 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // If there is a saved username already there, let's use it
         typeUserName.layer.cornerRadius = 8
+        messageOK.layer.cornerRadius = 23
+        mesageView.layer.cornerRadius = 12
+        
+       typeUserName.isHidden = true
         
         self.typeUserName.delegate = self
         
@@ -52,7 +59,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Hide keyboard and textfield functions
-        
+    
+    
+    @IBAction func messageOKAction(_ sender: Any) {
+        messageLabel.isHidden = true
+        mesageView.isHidden = true
+        messageOK.isHidden = true
+        typeUserName.isHidden = false
+    }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -84,6 +100,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // url SteemJS api (Content by blog), instead of username, the function adds the text from userLabel
         let url = URL(string: "https://api.steemjs.com/get_discussions_by_blog?query=%7B%22tag%22%3A%22" + userLabel.text! + "%22%2C%20%22limit%22%3A%20%221%22%7D")
+        
+        
         URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
             if(error != nil){
@@ -115,8 +133,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
-                    
-                    
+                 
                     
                 }catch let error as NSError{
                     print(error)
