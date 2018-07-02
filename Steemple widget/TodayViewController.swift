@@ -70,7 +70,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                             self.payout.text = payout as? String
                         }
                     }
-                    // Calling the pending payout
+                    // Calling the author
                     if let authors = json[0]["author"] {
                         DispatchQueue.main.async {
                             self.userN.text = authors as? String
@@ -92,6 +92,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }).resume()
         
     }
+    
+    // Checkin the internal market
     
     func ticker() {
         let url = URL(string: "https://api.steemjs.com/get_ticker?=value")!

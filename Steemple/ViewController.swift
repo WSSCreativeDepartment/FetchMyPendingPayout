@@ -156,6 +156,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                     }
                     
+                    // this one doesnt work
+                    
                     if let theVotes = json[0]["net_votes"] {
                         DispatchQueue.main.async {
                             self.votesLabel.text = theVotes as? String
@@ -183,7 +185,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 
-    
+    // The function for internal market in Steem Blockchain
     
     func ticker() {
         let url = URL(string: "https://api.steemjs.com/get_ticker?=value")!
