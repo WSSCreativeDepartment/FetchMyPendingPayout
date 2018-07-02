@@ -15,9 +15,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     
     // Outlets
+    
         
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var payout: UILabel!
+    
+    @IBOutlet weak var userN: UILabel!
+    @IBOutlet weak var steemPrice: UILabel!
     
     
     
@@ -29,6 +33,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
          //   Fetching username from ViewController
             
             author.text = name as? String
+            
         }
     }
     
@@ -44,6 +49,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         completionHandler(NCUpdateResult.newData)
         SteemApi()
+        ticker()
 
     }
     
@@ -64,7 +70,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                             self.payout.text = payout as? String
                         }
                     }
-                    
+                    // Calling the pending payout
+                    if let authors = json[0]["author"] {
+                        DispatchQueue.main.async {
+                            self.userN.text = authors as? String
+                        }
+                    }
                     
                     
                     
@@ -81,4 +92,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }).resume()
         
     }
+    
+    func ticker() {
+        let url = URL(string: "https://api.steemjs.com/get_ticker?=value")!
+        URLSession.shared.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            if(error != nil){
+                print("error")
+            }else{
+                do{
+                    var json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                    DispatchQueue.main.async {
+                        self.steemPrice.text = json["latest"] as! String
+                        
+                    }
+                }catch let error as NSError{
+                    print(error)
+                }
+            }
+        }).resume()
+    }
+   
 }

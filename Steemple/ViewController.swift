@@ -23,9 +23,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mesageView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messageOK: UIButton!
+  
+    
+    @IBOutlet weak var steemPrice: UILabel!
+    
+    var permLabel: UILabel?
+    
+    @IBOutlet weak var votesLabel: UILabel!
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,17 +55,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if userLabel.text != nil {
             
             // Calling the main function
+            ticker()
            SteemApi()
             
+
         }
+            
             
         else {
             return
         }
+        
+        
+        
     }
     
-    // Hide keyboard and textfield functions
     
+    // The warning message
     
     @IBAction func messageOKAction(_ sender: Any) {
         messageLabel.isHidden = true
@@ -68,8 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         typeUserName.isHidden = false
     }
     
-    
-    
+    // Hide keyboard and textfield functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
@@ -88,6 +99,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Calling the main function
         
       SteemApi()
+        
+        
+
         
         return true
     }
@@ -133,6 +147,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
+                    // Let's call the username of the author
+                    if let thePermlink = json[0]["permlink"] {
+                        DispatchQueue.main.async {
+                            self.permLabel?.text = thePermlink as? String
+                            
+                        }
+                        
+                    }
+                    
+                    if let theVotes = json[0]["net_votes"] {
+                        DispatchQueue.main.async {
+                            self.votesLabel.text = theVotes as? String
+                        }
+                    }
+                    
+                    
+  
+          
                  
                     
                 }catch let error as NSError{
@@ -140,13 +172,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            
-            
-            
+        
+
+           
             
         }).resume()
         
+        
+        
+        
     }
+
+    
+    
+    func ticker() {
+        let url = URL(string: "https://api.steemjs.com/get_ticker?=value")!
+        URLSession.shared.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            if(error != nil){
+                print("error")
+            }else{
+                do{
+                    var json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                    DispatchQueue.main.async {
+                        self.steemPrice.text = json["latest"] as! String
+                    
+                    }
+                }catch let error as NSError{
+                    print(error)
+                }
+            }
+        }).resume()
+    }
+    
+
+    
+    
+
+    
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -155,4 +219,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
 }
+
 
