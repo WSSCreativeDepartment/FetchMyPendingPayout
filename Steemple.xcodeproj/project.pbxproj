@@ -12,6 +12,8 @@
 		811A4A5B20D6FE41000D32E9 /* libSwiftyJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811A4A5A20D6FE41000D32E9 /* libSwiftyJSON.a */; };
 		811A4A5D20D6FE65000D32E9 /* libSwiftyJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811A4A5C20D6FE65000D32E9 /* libSwiftyJSON.a */; };
 		811A4A5F20D6FE6E000D32E9 /* libSwiftyJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811A4A5E20D6FE6E000D32E9 /* libSwiftyJSON.a */; };
+		818A506520EB8E1F0070D40C /* bittrexCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A506420EB8E1F0070D40C /* bittrexCall.swift */; };
+		818A506720EB946A0070D40C /* bittrexCallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A506620EB946A0070D40C /* bittrexCallWidget.swift */; };
 		81AE19E420E63F7B0061129E /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE19E320E63F7B0061129E /* ViewController2.swift */; };
 		81D3657620D6FA4A00A1945B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3657520D6FA4A00A1945B /* AppDelegate.swift */; };
 		81D3657820D6FA4A00A1945B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3657720D6FA4A00A1945B /* ViewController.swift */; };
@@ -25,6 +27,7 @@
 		81D365A620D6FABB00A1945B /* Steemple_framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 81D365A420D6FABB00A1945B /* Steemple_framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81D365A920D6FABB00A1945B /* Steemple_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D365A220D6FABB00A1945B /* Steemple_framework.framework */; };
 		81D365AA20D6FABB00A1945B /* Steemple_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81D365A220D6FABB00A1945B /* Steemple_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81F7358920ECE59A00A6D183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D3657C20D6FA5A00A1945B /* Assets.xcassets */; };
 		D3F788B79D192C08528B3E28 /* libPods-Steemple framework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79EC4471D058C6F42563EABF /* libPods-Steemple framework.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,8 @@
 		811A4A5A20D6FE41000D32E9 /* libSwiftyJSON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftyJSON.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		811A4A5C20D6FE65000D32E9 /* libSwiftyJSON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftyJSON.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		811A4A5E20D6FE6E000D32E9 /* libSwiftyJSON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftyJSON.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		818A506420EB8E1F0070D40C /* bittrexCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bittrexCall.swift; sourceTree = "<group>"; };
+		818A506620EB946A0070D40C /* bittrexCallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bittrexCallWidget.swift; sourceTree = "<group>"; };
 		81AE19E320E63F7B0061129E /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		81D3657220D6FA4A00A1945B /* Steemple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steemple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D3657520D6FA4A00A1945B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 				81D365AF20D6FADB00A1945B /* Steemple.entitlements */,
 				81D3657520D6FA4A00A1945B /* AppDelegate.swift */,
 				81D3657720D6FA4A00A1945B /* ViewController.swift */,
+				818A506420EB8E1F0070D40C /* bittrexCall.swift */,
 				81D3657920D6FA4A00A1945B /* Main.storyboard */,
 				81AE19E320E63F7B0061129E /* ViewController2.swift */,
 				81D3657C20D6FA5A00A1945B /* Assets.xcassets */,
@@ -205,6 +211,7 @@
 			children = (
 				81D365B020D6FAF500A1945B /* Steemple widget.entitlements */,
 				81D3659020D6FA8C00A1945B /* TodayViewController.swift */,
+				818A506620EB946A0070D40C /* bittrexCallWidget.swift */,
 				81D3659220D6FA8C00A1945B /* MainInterface.storyboard */,
 				81D3659520D6FA8C00A1945B /* Info.plist */,
 			);
@@ -359,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F7358920ECE59A00A6D183 /* Assets.xcassets in Resources */,
 				81D3659420D6FA8C00A1945B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +444,7 @@
 			files = (
 				81D3657820D6FA4A00A1945B /* ViewController.swift in Sources */,
 				81D3657620D6FA4A00A1945B /* AppDelegate.swift in Sources */,
+				818A506520EB8E1F0070D40C /* bittrexCall.swift in Sources */,
 				81AE19E420E63F7B0061129E /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818A506720EB946A0070D40C /* bittrexCallWidget.swift in Sources */,
 				81D3659120D6FA8C00A1945B /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

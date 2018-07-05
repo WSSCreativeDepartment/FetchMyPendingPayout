@@ -24,24 +24,50 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var steemPrice: UILabel!
     
     
+    // Bittrex Market info labels
+    
+    @IBOutlet weak var market1: UILabel!
+    @IBOutlet weak var market2: UILabel!
+    @IBOutlet weak var market3: UILabel!
+    
+    @IBOutlet weak var price1: UILabel!
+    @IBOutlet weak var price2: UILabel!
+    @IBOutlet weak var price3: UILabel!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
+        
+      
+     
+        
         if let name = UserDefaults.init(suiteName: "group.steempleGroup")?.value(forKey: "MyNameIs"){
             
-         //   Fetching username from ViewController
+         //   Fetching username from ViewController. It remains saved in the app when it is turned off or when it works in the background, untill you change it
             
             author.text = name as? String
             
+        }
+    }
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if (activeDisplayMode == NCWidgetDisplayMode.compact) {
+            self.preferredContentSize = maxSize
+        }
+        else {
+            //expanded
+            self.preferredContentSize = CGSize(width: maxSize.width, height: 200)
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
+  
     
     // This is function that refreshes the widget each time you visit it
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -50,6 +76,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
         SteemApi()
         ticker()
+        bittrex()
 
     }
     
@@ -113,6 +140,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }
             }
         }).resume()
+    }
+    
+    //calling the Bittrex info from bittrexCallWidget
+    
+    
+    func bittrex() {
+        steemInfo.forecast(withMarket: "btc-steem") { (results:[steemInfo]) in
+            for marketName in results {
+                self.market1.text = marketName.marketName
+                let c:String = String(format: "%f", marketName.last)
+                self.price1.text = c
+                
+            }
+        }
+        
+        steemInfo.forecast(withMarket: "btc-sbd") { (results:[steemInfo]) in
+            for marketName in results {
+                self.market2.text = marketName.marketName
+                let d:String = String(format: "%f", marketName.last)
+                self.price2.text = d
+                
+            }
+            
+        }
+        
+        steemInfo.forecast(withMarket: "usd-btc") { (results:[steemInfo]) in
+            for marketName in results {
+                self.market3.text = marketName.marketName
+                let e:String = String(format: "%f", marketName.last)
+                self.price3.text = e
+                
+            }
+            
+        }
     }
    
 }

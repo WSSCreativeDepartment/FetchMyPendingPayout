@@ -20,14 +20,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var pendingPayoutLabel: UILabel!
     
-    @IBOutlet weak var mesageView: UIView!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var messageOK: UIButton!
+
   
     
     @IBOutlet weak var steemPrice: UILabel!
     
+    // Outlets for Bittrex Market Info
+    
+    @IBOutlet weak var arketOne: UILabel!
+    @IBOutlet weak var marketTwo: UILabel!
+    @IBOutlet weak var marketThree: UILabel!
+    
+    @IBOutlet weak var priceOne: UILabel!
+    @IBOutlet weak var priceTwo: UILabel!
+    @IBOutlet weak var priceThree: UILabel!
+    
+    // permLabel is here for nothing, I plan to use it in the future
+    
     var permLabel: UILabel?
+    
     
     @IBOutlet weak var votesLabel: UILabel!
     
@@ -35,12 +46,61 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // If there is a saved username already there, let's use it
-        typeUserName.layer.cornerRadius = 8
-        messageOK.layer.cornerRadius = 23
-        mesageView.layer.cornerRadius = 12
         
-       typeUserName.isHidden = true
+        // This is other part of Bittrex API url
+        
+        
+        
+        // Let's start with btc-steem market
+        // marketName is a string, while "last" is Double so we have to convert it to String using parameter "c"
+        
+        steemInfo.forecast(withMarket: "btc-steem") { (results:[steemInfo]) in
+            for marketName in results {
+                self.arketOne.text = marketName.marketName
+                let c:String = String(format: "%f", marketName.last)
+                self.priceOne.text = c
+                
+            }
+        }
+        
+        
+        // btc-sbd market
+            
+            steemInfo.forecast(withMarket: "btc-sbd") { (results:[steemInfo]) in
+                for marketName in results {
+                    self.marketTwo.text = marketName.marketName
+                    let d:String = String(format: "%f", marketName.last)
+                    self.priceTwo.text = d
+                    
+                }
+            
+        }
+        
+        // usd-btc market.. i will use it to count usd-steem and usd-sbd market
+        
+        steemInfo.forecast(withMarket: "usd-btc") { (results:[steemInfo]) in
+            for marketName in results {
+                self.marketThree.text = marketName.marketName
+                let e:String = String(format: "%f", marketName.last)
+                self.priceThree.text = e
+                
+            }
+            
+        }
+        
+        
+        
+        
+        // If there is a saved username already there, let's use it
+        
+        
+        // First, let's get some rouded corners
+        typeUserName.layer.cornerRadius = 8
+       
+        
+        
+        
+        
         
         self.typeUserName.delegate = self
         
@@ -73,17 +133,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // The warning message
     
-    @IBAction func messageOKAction(_ sender: Any) {
-        messageLabel.isHidden = true
-        mesageView.isHidden = true
-        messageOK.isHidden = true
-        typeUserName.isHidden = false
-    }
+  
     
     // Hide keyboard and textfield functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
+    }
+    
+    // This function allows only lowercase and no whitespace
+    func textField(_ textFieldToChange: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //just change this charectar username  it's a text field
+        if textFieldToChange == typeUserName {
+            let characterSetNotAllowed = CharacterSet.whitespaces
+            if let _ = string.rangeOfCharacter(from:NSCharacterSet.uppercaseLetters) {
+                return false
+            }
+            if let _ = string.rangeOfCharacter(from: characterSetNotAllowed, options: .caseInsensitive) {
+                return false
+            } else {
+                return true
+            }
+        }
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -156,14 +228,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                     }
                     
-                    // this one doesnt work
-                    
-                    if let theVotes = json[0]["net_votes"] {
-                        DispatchQueue.main.async {
-                            self.votesLabel.text = theVotes as? String
-                        }
-                    }
-                    
+               
                     
   
           
@@ -187,6 +252,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     // The function for internal market in Steem Blockchain
     
+    //
+    
     func ticker() {
         let url = URL(string: "https://api.steemjs.com/get_ticker?=value")!
         URLSession.shared.dataTask(with: url, completionHandler: {
@@ -208,10 +275,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    
-    
 
-    
     
     
 
