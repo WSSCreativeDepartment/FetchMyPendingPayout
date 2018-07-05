@@ -14,4 +14,10 @@ This is my first time using custom frameworks, Steemjs API and pod "SwiftyJSON".
 The app is free for using and personal modification. 
 You can find announcement and more about the app here:
 https://steemit.com/utopian-io/@dumar022/my-new-ios-widget-app-fetchmypendingpayout-check-the-payout-for-your-recent-steemit-post-without-even-unlocking-your-iphone
+
+### NEW UPDATE(July 5th 2018)
+I fixed crushing by allowing only lowercase letters in username text field. So I removed the warning message.
+Added Bittrex API for the Steem and SBD market info to the application and to the widget.
+New graphics.
+
 #### Thank you!
